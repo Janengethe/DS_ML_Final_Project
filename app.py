@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import joblib
 from datetime import datetime
+import matplotlib.pyplot as plt
 
 
 model = joblib.load("best_model.pkl")
@@ -60,6 +61,25 @@ def main():
         rounded = str(np.round(prediction[0])).rstrip('.0')
 
         st.write(f"Predicted Attendance: {rounded} People")
+
+
+        historical_data = pd.DataFrame({
+            "Date": pd.date_range(start="2017-01-01", end="2017-12-31"),
+            "Attendance": np.random.randint(20, 100, size=365)
+            })
+        # Sample temperature impact data
+        temperature_impact_data = pd.DataFrame({
+            "Temperature (°F)": np.arange(20, 100),
+            "Attendance Impact": np.random.uniform(-10, 10, size=80)
+            })
+        st.subheader("Historical Attendance Data")
+        # Plot historical attendance data
+        fig, ax = plt.subplots(figsize=(10, 5))
+        ax.plot(historical_data["Date"], historical_data["Attendance"])
+        ax.set_xlabel("Date")
+        ax.set_ylabel("Attendance")
+        ax.set_title("Historical Attendance Trend")
+        st.pyplot(fig)
 
 
 if __name__ == "__main__":

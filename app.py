@@ -6,7 +6,7 @@ from datetime import datetime
 import matplotlib.pyplot as plt
 
 
-model = joblib.load("best_model.pkl")
+model = joblib.load("big_model.pkl")
 
 
 def load_model():

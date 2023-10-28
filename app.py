@@ -6,14 +6,14 @@ from datetime import datetime
 import matplotlib.pyplot as plt
 
 
-model = joblib.load("big_model.pkl")
+# model = joblib.load("big_model.pkl")
 
 
-# def load_model():
-#     model = joblib.load("best_model.pkl")
-#     return model
+def load_model():
+    model = joblib.load("best_model.pkl")
+    return model
 
-# model = load_model()
+model = load_model()
 
 # Streamlit app
 def main():
